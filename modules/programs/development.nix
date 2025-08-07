@@ -21,12 +21,20 @@
     gnumake
     cmake
     
-    # Network tools
+  
     httpie
     
     # Archives
     unzip
     zip
+
+    nmap
+    ffuf
+    gobuster
+    sqlmap
+    nikto
+    metasploit
+    theharvester
   ];
   
   programs.direnv = {
