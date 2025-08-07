@@ -5,35 +5,47 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:LnL7/nix-darwin";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
+    
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nix-darwin, nixpkgs }:
+  outputs = inputs@{ self, nix-darwin, nixpkgs, home-manager }:
   let
     configuration = { pkgs, ... }: {
-      # Enable Nix flakes
-      nix.settings.experimental-features = "nix-command flakes";
+      # Import only system modules for Darwin
+      imports = [ ./modules/system ];
       
-      # Set system state version
-      system.stateVersion = 5;
+      # Enable Nix daemon
+      services.nix-daemon.enable = true;
+    };
+    
+    homeConfiguration = { pkgs, ... }: {
+      # Import your home-manager modules
+      imports = [ ./modules/programs ];
       
-      # Basic packages
-      environment.systemPackages = with pkgs; [
-        git
-        vim
-        curl
-        wget
-        neovim
-        
-      ];
+      # Home Manager settings
+      home.username = "pingu";  # Replace with your actual username
+      home.homeDirectory = "/Users/pingu";  # Replace with your actual username
+      home.stateVersion = "23.05";
       
-      # Set platform (change to x86_64-darwin for Intel Macs)
-      nixpkgs.hostPlatform = "aarch64-darwin";
+      # Let Home Manager install and manage itself
+      programs.home-manager.enable = true;
     };
   in
   {
-    # Replace "YourMacName" with your actual hostname or any name you prefer
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
-      modules = [ configuration ];
+      modules = [
+        configuration
+        home-manager.darwinModules.home-manager
+        {
+          home-manager.useGlobalPkgs = true;
+          home-manager.useUserPackages = true;
+          home-manager.users.pingu = homeConfiguration;  # Replace with your actual username
+        }
+      ];
     };
   };
 }

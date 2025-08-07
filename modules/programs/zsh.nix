@@ -27,11 +27,10 @@
       gp = "git push";
       
       # Nix shortcuts
-      nrs = "darwin-rebuild switch --flake ~/Github/macOs-Nix";
+      nrs = "darwin-rebuild switch --flake ~/.config/nix";  # More flexible path
       hms = "home-manager switch";
     };
     
-    # Use initExtra instead of promptInit for Home Manager
     initExtra = ''
       # Custom prompt
       autoload -U colors && colors
