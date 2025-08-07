@@ -46,7 +46,12 @@
     # inclui home-manager
     home-manager = {
       url = "github:nix-community/home-manager";
-
+      users = {
+        pingu.home = {
+          stateVersion = "25.05";
+          homeDirectory = "/Users/pingu";
+        };
+      };
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
