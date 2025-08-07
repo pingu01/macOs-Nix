@@ -14,21 +14,48 @@
   {
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [
-        # Import system modules
-        ./modules/system
+        # Inline system configuration - no external modules
+        {
+          nix.settings.experimental-features = "nix-command flakes";
+          system.stateVersion = 5;
+          nixpkgs.hostPlatform = "aarch64-darwin";
+          nixpkgs.config.allowUnfree = true;
+          
+          environment.systemPackages = with nixpkgs.legacyPackages.aarch64-darwin; [
+            git
+            vim
+            curl
+          ];
+        }
         
-        # Home Manager integration
+        # Home Manager with inline configuration
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.pingu = {
-            imports = [ ./modules/programs ];
-            
-            # Required Home Manager settings
+          home-manager.users.pingu = { pkgs, ... }: {
+            # Required settings
             home.username = "pingu";
             home.homeDirectory = "/Users/pingu";
             home.stateVersion = "23.11";
+            
+            # Packages
+            home.packages = with pkgs; [
+              nodejs
+              python3
+            ];
+            
+            # Programs
+            programs.git = {
+              enable = true;
+              userName = "Pingu";
+              userEmail = "pingu@example.com";
+            };
+            
+            programs.zsh = {
+              enable = true;
+              shellAliases.ll = "ls -la";
+            };
           };
         }
       ];
