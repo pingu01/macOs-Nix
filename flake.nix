@@ -14,17 +14,21 @@
   {
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [
-        # Import your modular configuration
-        ./modules
+        # Import system modules
+        ./modules/system
         
         # Home Manager integration
         home-manager.darwinModules.home-manager
         {
           home-manager.useGlobalPkgs = true;
           home-manager.useUserPackages = true;
-          home-manager.users.pingu = { # Replace 'pingu' with your username
-            imports = [ ./modules ];
-            home.stateVersion = "23.11";  # Add this line
+          home-manager.users.pingu = {
+            imports = [ ./modules/programs ];
+            
+            # Required Home Manager settings
+            home.username = "pingu";
+            home.homeDirectory = "/Users/pingu";
+            home.stateVersion = "23.11";
           };
         }
       ];
