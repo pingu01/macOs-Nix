@@ -25,6 +25,7 @@
         gnumake
         cmake
         httpie
+        wireguard-ui
 
       ];
 
