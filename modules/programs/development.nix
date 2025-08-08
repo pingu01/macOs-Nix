@@ -1,44 +1,37 @@
-{ config, lib, pkgs, ... }:
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}:
 
 {
-  home.packages = with pkgs; [
-    # Languages
-    nodejs
-    python3
-    rustc
-    cargo
-    go
-    
-    # CLI tools
-    ripgrep
-    fd
-    bat
-    jq
-    tree
-    htop
-    
-    # Build tools
-    gnumake
-    cmake
-    
-  
-    httpie
-    
-    # Archives
-    unzip
-    zip
+  home-manager.sharedModules = [
+    {
+      home.packages = with pkgs; [
+        nodejs
+        python3
+        rustc
+        cargo
+        go
 
-    nmap
-    ffuf
-    gobuster
-    sqlmap
-    nikto
-    metasploit
-    theharvester
+        ripgrep
+        fd
+        bat
+        jq
+        tree
+        htop
+
+        gnumake
+        cmake
+        httpie
+
+      ];
+
+      programs.direnv = {
+        enable = true;
+        enableZshIntegration = true;
+      };
+    }
   ];
-  
-  programs.direnv = {
-    enable = true;
-    enableZshIntegration = true;
-  };
 }
