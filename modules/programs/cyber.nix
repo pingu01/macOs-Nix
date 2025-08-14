@@ -17,6 +17,7 @@
         metasploit
         theharvester
         mitmproxy
+        openvpn
       ];
 
        programs.direnv = {

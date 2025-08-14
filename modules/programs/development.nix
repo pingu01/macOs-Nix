@@ -27,6 +27,7 @@
         cmake
         httpie
         wireguard-ui
+        neovim
 
       ];
 
