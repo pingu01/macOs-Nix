@@ -18,7 +18,6 @@
         theharvester
         mitmproxy
         openvpn
-        mullvad-vpn
       ];
 
        programs.direnv = {
