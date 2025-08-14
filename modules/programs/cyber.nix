@@ -16,6 +16,7 @@
         nikto
         metasploit
         theharvester
+        mitmproxy
       ];
 
        programs.direnv = {

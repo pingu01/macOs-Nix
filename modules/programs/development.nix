@@ -14,6 +14,7 @@
         rustc
         cargo
         go
+        bun
 
         ripgrep
         fd
