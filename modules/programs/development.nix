@@ -15,6 +15,7 @@
         cargo
         go
         bun
+        pipx
 
         ripgrep
         fd
