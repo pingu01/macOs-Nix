@@ -18,7 +18,7 @@
         theharvester
         mitmproxy
         openvpn
-        netexec
+        
       ];
 
        programs.direnv = {
