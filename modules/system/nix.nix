@@ -31,6 +31,7 @@
   nixpkgs = {
     hostPlatform = "aarch64-darwin";  # or "x86_64-darwin"
     config.allowUnfree = true;
+    config.allowBroken = true;
   };
   
   system.stateVersion = 5;

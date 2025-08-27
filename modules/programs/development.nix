@@ -16,7 +16,6 @@
         go
         bun
         pipx
-        pip
 
         ripgrep
         fd
