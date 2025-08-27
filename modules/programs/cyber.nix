@@ -18,7 +18,7 @@
         theharvester
         mitmproxy
         openvpn
-        
+        samba4Full
       ];
 
        programs.direnv = {
