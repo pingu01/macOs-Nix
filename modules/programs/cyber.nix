@@ -19,6 +19,7 @@
         mitmproxy
         openvpn
         samba4Full
+        python313Packages.impacket
       ];
 
        programs.direnv = {
