@@ -20,6 +20,7 @@
         openvpn
         samba4Full
         python313Packages.impacket
+        evil-winrm
       ];
 
        programs.direnv = {
