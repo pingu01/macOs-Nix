@@ -21,6 +21,7 @@
         samba4Full
         python313Packages.impacket
         evil-winrm
+        exiftool
       ];
 
        programs.direnv = {
