@@ -22,6 +22,7 @@
         python313Packages.impacket
         evil-winrm
         exiftool
+        pulseview
       ];
 
        programs.direnv = {
