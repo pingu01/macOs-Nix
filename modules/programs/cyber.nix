@@ -23,6 +23,7 @@
         evil-winrm
         exiftool
         tor
+        penelope
       ];
 
        programs.direnv = {
