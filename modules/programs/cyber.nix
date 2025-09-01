@@ -22,7 +22,7 @@
         python313Packages.impacket
         evil-winrm
         exiftool
-        pulseview
+        tor
       ];
 
        programs.direnv = {
