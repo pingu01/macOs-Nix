@@ -23,10 +23,18 @@
         evil-winrm
         exiftool
         tor
-        penelope
+        (penelope.overrideAttrs (oldAttrs: {
+          version = "0.14.8";
+          src = fetchFromGitHub {
+            owner = "brightio";
+            repo = "penelope";
+            rev = "v0.14.8";
+            hash = "sha256-m4EYP1lKte8r9Xa/xAuv6aiwMNha+B8HXUCizH0JgmI=";
+          };
+        }))
       ];
 
-       programs.direnv = {
+      programs.direnv = {
         enable = true;
         enableZshIntegration = true;
       };
