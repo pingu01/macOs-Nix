@@ -8,5 +8,6 @@
     htop
     tree
     jellyfin-ffmpeg
+    iproute2mac
   ];
 }
