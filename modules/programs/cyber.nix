@@ -23,6 +23,7 @@
         evil-winrm
         exiftool
         tor
+        dalfox
         (penelope.overrideAttrs (oldAttrs: {
           version = "0.14.8";
           src = fetchFromGitHub {
