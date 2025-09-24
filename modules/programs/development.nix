@@ -30,6 +30,7 @@
         wireguard-ui
         neovim
 
+        obsidian
       ];
 
       programs.direnv = {
