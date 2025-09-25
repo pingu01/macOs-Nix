@@ -12,6 +12,7 @@
         nodejs
         python3
         rustc
+        zulu25
         cargo
         go
         bun
