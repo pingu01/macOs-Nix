@@ -14,6 +14,10 @@
         rustc
         zulu25
         cargo
+        clippy
+        rustfmt
+        rust-analyzer
+        
         go
         bun
         pipx
