@@ -1,57 +1,35 @@
 {
-  description = "My Darwin system configuration";
-
-  nixConfig = {
-    extra-substituters = [
-      "https://cache.garnix.io/"
-      "https://cache.nixos.org"
-      "https://nix-community.cachix.org"
-    ];
-
-    extra-trusted-public-keys = [
-      "cache.garnix.io:CTFPyKSLcx5RMJKfLo5EEPUObbA78b0YQ2DTCJXqr9g="
-      "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-      "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    ];
-
-    experimental-features = [
-      "cgroups"
-      "flakes"
-      "nix-command"
-      "pipe-operators"
-    ];
-
-    builders-use-substitutes = true;
-    flake-registry = "";
-    http-connections = 50;
-    lazy-trees = true;
-    show-trace = true;
-    trusted-users = [
-      "root"
-      "@wheel"
-      "@admin"
-    ];
-    use-cgroups = true;
-    warn-dirty = false;
-  };
+  description = "Multi-platform Nix configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    # inclui home-manager
+    nix-darwin = {
+      url = "github:LnL7/nix-darwin";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs = inputs@{ self, nix-darwin, home-manager, nixpkgs }:
-  {
+  outputs = { self, nix-darwin, home-manager, nixpkgs }: {
+    # macOS configuration
     darwinConfigurations."mac" = nix-darwin.lib.darwinSystem {
       modules = [
-        ./modules
+        ./hosts/mac
+        ./modules/darwin
         home-manager.darwinModules.default
+      ];
+    };
+
+    # NixOS configuration
+    nixosConfigurations."nixos" = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./hosts/nixos
+        ./modules/nixos
+        home-manager.nixosModules.default
       ];
     };
   };

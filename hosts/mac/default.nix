@@ -1,0 +1,4 @@
+{ ... }:
+{
+  # Mac-specific overrides
+}
