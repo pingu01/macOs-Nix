@@ -14,7 +14,6 @@
         gobuster
         sqlmap
         nikto
-        metasploit
         theharvester
         mitmproxy
         openvpn
