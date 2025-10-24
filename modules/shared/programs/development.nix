@@ -17,7 +17,7 @@
         clippy
         rustfmt
         rust-analyzer
-        
+
         go
         bun
         pipx
@@ -35,7 +35,6 @@
         wireguard-ui
         neovim
 
-        obsidian
       ];
 
       programs.direnv = {
