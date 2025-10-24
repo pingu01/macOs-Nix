@@ -18,7 +18,7 @@
         theharvester
         mitmproxy
         openvpn
-        samba4Full
+        samba
         python313Packages.impacket
         evil-winrm
         exiftool
