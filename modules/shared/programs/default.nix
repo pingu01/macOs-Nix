@@ -5,4 +5,4 @@
     ./development.nix
     ./git.nix
   ]
-}
+};
