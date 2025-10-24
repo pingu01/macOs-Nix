@@ -16,6 +16,15 @@
           update = "sudo nixos-rebuild switch";
         };
         history.size = 10000;
+
+        oh-my-zsh = {
+          plugins = [
+            "git"
+            "rust"
+            "sudo"
+          ];
+          theme = "duellj"
+        }
       };
     }
   ];
