@@ -24,7 +24,7 @@
             "rust"
             "sudo"
           ];
-          theme = "funky";
+          theme = "robbyrussell";
         };
       };
     }
