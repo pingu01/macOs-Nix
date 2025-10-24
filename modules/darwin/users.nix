@@ -7,9 +7,12 @@
 {
   networking.hostName = "mac";
 
+    programs.zsh.enable = true;
+
   users.users.pingu = {
     name = "pingu";
     home = "/Users/pingu";
+    shell = pkgs.zsh;
   };
 
   home-manager.users.pingu.home = {

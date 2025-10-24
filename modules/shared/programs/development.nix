@@ -9,6 +9,8 @@
   home-manager.sharedModules = [
     {
       home.packages = with pkgs; [
+        nh
+
         nodejs
         python3
         rustc

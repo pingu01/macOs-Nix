@@ -2,12 +2,15 @@
 {
   networking.hostName = "nixos";
 
+  programs.zsh.enable = true;
+
   users.users.pingu = {
     isNormalUser = true;
     description = "Pingu User";
     home = "/home/pingu";
     extraGroups = [ "wheel" "networkmanager" ];
     initialPassword = "changeme";
+    shell = pkgs.zsh;
   };
 
   security.sudo.wheelNeedsPassword = true;
@@ -21,7 +24,7 @@
     programs.bash.enable = true;
   };
 
-  users.defaultUserShell = pkgs.bash;
+  users.defaultUserShell = pkgs.zsh;
 
   system.stateVersion = "25.05";
 }
