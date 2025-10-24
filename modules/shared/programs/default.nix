@@ -1,5 +1,8 @@
 { ... }:
 {
-  # Shared programs will go here
-  # For now, this is just a placeholder
+  imports = [
+    ./cyber.nix
+    ./development.nix
+    ./git.nix
+  ]
 }

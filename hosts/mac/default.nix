@@ -1,4 +1,6 @@
 { ... }:
 {
-  # Mac-specific overrides
+  imports = [
+    ./zed.nix
+  ]
 }

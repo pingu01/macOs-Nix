@@ -1,8 +1,7 @@
 { ... }:
 {
-  boot.loader.grub = {
-    enable = true;
-    device = "/dev/sda";
-  };
-  networking.networkmanager.enable = true;
+boot.loader = {
+  systemd-boot.enable = true;
+  efi.canTouchEfiVariables = true;
+   };
 }
