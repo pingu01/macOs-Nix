@@ -23,8 +23,8 @@
             "rust"
             "sudo"
           ];
-          theme = "duellj"
-        }
+          theme = "duellj";
+        };
       };
     }
   ];
