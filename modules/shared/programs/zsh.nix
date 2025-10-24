@@ -8,8 +8,8 @@
     {
       programs.zsh = {
         enable = true;
-        enableCompletion = true;  # Changed from enableCompletions
-        autosuggestion.enable = true;  # Also note: autosuggestion (singular)
+        enableCompletion = true;
+        autosuggestion.enable = true;
         syntaxHighlighting.enable = true;
         shellAliases = {
           ll = "ls -l";
@@ -23,7 +23,7 @@
             "rust"
             "sudo"
           ];
-          theme = "duellj";
+          theme = "funky";
         };
       };
     }
