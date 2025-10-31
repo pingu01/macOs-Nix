@@ -31,6 +31,7 @@
         tree
         htop
 
+        obsidian
         gnumake
         cmake
         httpie
