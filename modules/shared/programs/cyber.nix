@@ -14,7 +14,6 @@
         gobuster
         sqlmap
         nikto
-        theharvester
         mitmproxy
         openvpn
         samba
